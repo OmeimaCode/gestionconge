@@ -9,7 +9,7 @@ const InputField = ({ label, name, type, placeHolder }) => {
         name={name}
         id={name}
         placeholder={placeHolder}
-        className="block px-0 w-full border-0 shadow-sm focus:ring-0 sm:text-sm"
+        className=" !outline-none block px-0 w-full border-0 shadow-sm focus:ring-0 sm:text-sm"
       />
     </div>
   );
