@@ -1,7 +1,11 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 const HomePage = () => {
     return (
-        <Sidebar />
+        <div className="relative flex flex-row">
+            <Sidebar />
+            <Outlet />
+        </div>
     );
 }
 export default HomePage;
