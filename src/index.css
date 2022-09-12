@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Naim:add default style */
+@layer base{
+  input{
+    @apply  !outline-none !important;
+  }
+  h1{
+    @apply font-title !important
+  }
+
+}

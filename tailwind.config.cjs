@@ -5,7 +5,16 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        //Naim: added color as primary
+        primary:'#14525F'
+        
+      },
+      fontFamily:{
+        'title':['Tomorrow', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
