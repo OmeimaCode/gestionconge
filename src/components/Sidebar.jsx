@@ -16,7 +16,7 @@ const Sidebar = () => {
     return (
             <div
                 className={` flex flex-col sticky top-0 left-0 ${
-                open ? "w-72" : "w-20 "
+                open ? "min-w-[300px]" : "max-w-[90px]"
                 } bg-cyan-900 h-screen p-5  pt-8 relative duration-300`}
                 >
                 <img

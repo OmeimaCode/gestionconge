@@ -1,9 +1,10 @@
 const InputField = ({ label, name, type, placeHolder }) => {
   return (
     <div className="mb-3 border rounded-md border-gray-600 py-1 px-3">
-      <label htmlFor={name} className="block text-sm text-gray-700">
+      <label htmlFor={name} className=" text-sm text-gray-700">
         {label}
       </label>
+     
       <input
         type={type}
         name={name}

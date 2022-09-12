@@ -10,16 +10,19 @@ import { SEPARATOR, SITE_TITLE } from "../utils/globalVariabls";
 import { useEffect } from "react";
 import Checkbox from "../components/Checkbox";
 import Header from "../components/Header";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   useEffect(() => {
     document.title = `Login ${SEPARATOR} ${SITE_TITLE}`;
   }, []);
+  const navigation=useNavigate()
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen my-6 lg:my-0 mx-6 sm:mx-0">
       <div className="flex justify-center items-center">
-        <section>
+        <section className="flex flex-col h-full">
+          <div className="flex-grow"></div>
           <Header />
 
           <img
@@ -59,6 +62,10 @@ const Login = () => {
           </div>
 
           <SubmitButton buttonText={"Continue"} />
+        <div className="flex-grow"></div>
+        <button onClick={()=>{
+          navigation("/admin")
+        }} className="btn btn-link">Je suis un admin</button>
         </section>
       </div>
       <div className="bg-cyan-900 hidden lg:flex items-center">
