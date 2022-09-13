@@ -1,17 +1,16 @@
 import {BiLogOut} from "react-icons/bi"
 import {AiOutlineDashboard , AiOutlineClockCircle} from "react-icons/ai"
 import {FaRegCalendarCheck} from "react-icons/fa"
-import {BsPerson} from "react-icons/bs"
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
+    const admin=true;
     const [open, setOpen] = useState(true);
     const Menus = [
         { title: "Dashboard", src: "Chartf" , route:"/",icon:<AiOutlineDashboard className="text-2xl"/> },
         { title: "Demande Congé ", src: "Calendar" ,route:"demandeconge" , icon: <FaRegCalendarCheck className="text-2xl"/> },
         { title: "Historique ", src: "Folder",route:"historique",icon: <AiOutlineClockCircle className="text-2xl"/>},
-        { title: "Compte", src: "User",route:"compte",icon: <BsPerson className="text-2xl"/>},
     ];
     return (
             <div
@@ -57,7 +56,8 @@ const Sidebar = () => {
                         </Link>
                     ))}
                 </ul>
-                <LougoutButton open={open}/>
+                { admin && <LougoutButton open={open}/> }
+                
             </div>
         
     );

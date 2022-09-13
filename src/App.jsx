@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import Historique from "./pages/Historique";
 import DemandeConge from "./pages/DemandeConge";
-import Compte from "./pages/Compte";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Admin from "./pages/Admin";
@@ -18,7 +17,6 @@ function App() {
         <Route index element={<Dashboard/>}/>
         <Route path="historique" element={<Historique/>}/>
         <Route path="demandeconge" element={<DemandeConge/>}/>
-        <Route path="compte" element={<Compte/>}/>
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/admin" element={<Admin/>}/>

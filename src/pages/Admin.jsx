@@ -22,8 +22,8 @@ const Admin = () => {
                         <input type="password" placeholder="info@site.com" className="input input-bordered w-full" />
                     </label>
                 </div>
-                <div className='py-6'></div>
-                <button className='btn btn-accent'>Se connecter</button>
+                <div className='py-3'></div>
+                <button className='btn btn-accent bg-amber-100'>Se connecter</button>
             </div>
         </div>
     )

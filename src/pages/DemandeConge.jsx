@@ -43,10 +43,10 @@ const Demandeconge = () => {
   }
   const [conge, setConge] = useState('maladie')
   return (
-    <div className='p-6 flex flex-row justify-center items-center w-full'>
-      <form onSubmit={onSubmit} className='max-w-[700px] w-full flex flex-col gap-5'>
-        <h1 className='font-title text-2xl uppercase'>Envoyez une demande de congé</h1>
-        <div className='py-4'>
+    <div className='pl-10 py-6  flex flex-row  w-full  flex-col gap-4'>
+      <form onSubmit={onSubmit} className='max-w-[1000px] w-full flex flex-col gap-5'>
+        <h1 className='font-title text-2xl uppercase py-6'>Envoyez une demande de congé :</h1>
+        <div className='py-2'>
 
         </div>
 
@@ -68,7 +68,7 @@ const Demandeconge = () => {
           <CheckBox option={"recompensation"} value={conge} setValue={setConge} label={'Congé recompensation'} />
         </div>
         <div className='py-3'></div>
-        <button type="submit" className={`btn btn-wide ${isLoading&&"loading"}`}>Envoyer la demande</button>
+        <button type="submit" className={`btn bg-cyan-800 hover:bg-primary btn-wide ${isLoading&&"loading"}`}>Envoyer la demande</button>
       </form>
 
     </div>
