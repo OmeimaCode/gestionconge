@@ -1,6 +1,9 @@
 import {BiLogOut} from "react-icons/bi"
 import {AiOutlineDashboard , AiOutlineClockCircle} from "react-icons/ai"
 import {FaRegCalendarCheck} from "react-icons/fa"
+import {HiOutlineUserGroup} from "react-icons/hi"
+import {BsCalendarCheck} from "react-icons/bs"
+
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,6 +14,9 @@ const Sidebar = () => {
         { title: "Dashboard", src: "Chartf" , route:"/",icon:<AiOutlineDashboard className="text-2xl"/> },
         { title: "Demande Congé ", src: "Calendar" ,route:"demandeconge" , icon: <FaRegCalendarCheck className="text-2xl"/> },
         { title: "Historique ", src: "Folder",route:"historique",icon: <AiOutlineClockCircle className="text-2xl"/>},
+        { title: "Gestion Congés ", src: "Calendar" ,route:"gestionconge" , icon: <BsCalendarCheck className="text-2xl"/> },
+        { title: "Gestion compte ", src: "Calendar" ,route:"gestioncompte" , icon: <HiOutlineUserGroup className="text-2xl"/> },
+
     ];
     return (
             <div

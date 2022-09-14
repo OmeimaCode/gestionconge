@@ -65,7 +65,7 @@ const Login = () => {
         <div className="flex-grow"></div>
         <button onClick={()=>{
           navigation("/admin")
-        }} className="btn btn-link">Je suis un admin</button>
+        }} className="btn btn-link text-primary">Je suis un admin</button>
         </section>
       </div>
       <div className="bg-cyan-900 hidden lg:flex items-center">
