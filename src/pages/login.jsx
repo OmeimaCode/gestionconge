@@ -7,21 +7,63 @@ import InformationCircleIcon from "@heroicons/react/24/solid/InformationCircleIc
 
 import { SEPARATOR, SITE_TITLE } from "../utils/globalVariabls";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Checkbox from "../components/Checkbox";
 import Header from "../components/Header";
 import { Link, useNavigate } from "react-router-dom";
-
+import { MdEmail } from "react-icons/md";
+import { BsFillUnlockFill } from "react-icons/bs";
+import { toast } from "react-toastify";
+import { useCookies } from 'react-cookie';
+const DB = [
+  {
+    email: "n@gmail.com",
+    password: "123456",
+    isAdmin:false,
+  },
+  {
+    email: "o@gmail.com",
+    password: "abcdef",
+    isAdmin:true,
+  },
+];
 const Login = () => {
+  const [email, setemail] = useState();
+  const [password, setpassword] = useState();
+  const [isLoading, setisLoading] = useState(false)
+  const [cookies, setCookie] = useCookies(['user']);
+
   useEffect(() => {
     document.title = `Login ${SEPARATOR} ${SITE_TITLE}`;
   }, []);
-  const navigation=useNavigate()
+  const navigation = useNavigate();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    //
+    //
+    setisLoading(true)
+    setTimeout(() => {
+      const data = {
+        email,
+        password,
+        isAdmin:false
+      };
+
+      if (DB.some((d) => d.email == email && d.password==password && d.isAdmin==false)) {
+        console.log('data', data)
+        setCookie('user', data);
+      } else {
+        toast.error("Utilisateur introuvable");
+      }
+   setisLoading(false)
+    }, 2000);
+  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen my-6 lg:my-0 mx-6 sm:mx-0">
       <div className="flex justify-center items-center">
-        <section className="flex flex-col h-full">
+        <form onSubmit={onSubmit} className="flex flex-col h-full gap-4">
           <div className="flex-grow"></div>
           <Header />
 
@@ -37,36 +79,46 @@ const Login = () => {
               Sign in by entering the information below
             </h3>
           </div>
-
-          <InputField
-            label={"Email Address"}
-            name={"email"}
-            type={"email"}
-            placeHolder={"email@example.com"}
-          />
-
-          <InputField
-            label={"Password"}
-            name={"password"}
-            type={"password"}
-            placeHolder={"********"}
-          />
-
-          <div className="block sm:flex justify-between mb-10 lg:mb-20">
-            <Checkbox label={"Remember Me"} name="remember" />
-
-            <div className="flex items-center text-sm font-light cursor-pointer mt-2 sm:mt-0 justify-end">
-              <InformationCircleIcon className="h-5 w-5 text-gray-400 mr-2" />
-              Forgotten Password
-            </div>
+          <div className="form-control">
+            <label className="input-group w-full">
+              <span>
+                <MdEmail className="text-xl" />
+              </span>
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
+                className="input input-bordered w-full"
+              />
+            </label>
           </div>
-
-          <SubmitButton buttonText={"Continue"} />
-        <div className="flex-grow"></div>
-        <button onClick={()=>{
-          navigation("/admin")
-        }} className="btn btn-link text-primary">Je suis un admin</button>
-        </section>
+          <div className="form-control">
+            <label className="input-group w-full">
+              <span>
+                <BsFillUnlockFill className="text-xl" />
+              </span>
+              <input
+                type="password"
+                placeholder="Mot de passe"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          <div className="py-4"></div>
+          <button type="submit" className={`btn btn-accent bg-amber-100 ${isLoading&& "loading"}`}>Se connecter</button>
+          <div className="flex-grow"></div>
+          <button
+            onClick={() => {
+              navigation("/admin");
+            }}
+            className="btn btn-link text-primary"
+          >
+            Je suis un admin
+          </button>
+        </form>
       </div>
       <div className="bg-cyan-900 hidden lg:flex items-center">
         <img src={LoginMan} alt="" className="-ml-10 xl:-ml-16" />
