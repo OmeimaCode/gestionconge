@@ -23,7 +23,7 @@ const Admin = () => {
                     </label>
                 </div>
                 <div className='py-3'></div>
-                <button className='btn btn-accent bg-amber-100'>Se connecter</button>
+                <button className='btn btn-accent bg-amber-100 hover:bg-amber-200 hover:border-transparent'>Se connecter</button>
             </div>
         </div>
     )

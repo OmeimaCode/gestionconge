@@ -19,7 +19,7 @@ const Dashboard = () => {
             
           </div>
           <div className="card-actions justify-end pt-20 p-6">
-              <button className="btn text-white btn-success bg-cyan-700 hover:bg-cyan-900">consulter profile</button>
+              <button className="btn text-white border-transparent hover:border-transparent btn-success bg-cyan-700 hover:bg-cyan-900">consulter profile</button>
             </div>
         </div>
       </div>

@@ -64,7 +64,7 @@ const Historique = () => {
     setTimeout(() => {
       setHistoriques(data);
       setisLoading(false);
-    }, 4000);
+    }, 2000);
   };
   return (
     <div className="p-10 flex   w-full  flex-col gap-5">

@@ -108,7 +108,7 @@ const Login = () => {
             </label>
           </div>
           <div className="py-4"></div>
-          <button type="submit" className={`btn btn-accent bg-amber-100 ${isLoading&& "loading"}`}>Se connecter</button>
+          <button type="submit" className={`btn btn-accent  border-transparent hover:bg-amber-200 bg-cyan-700 hover:text-cyan-700 hover:border-transparent text-white ${isLoading&& "loading"}`}>Se connecter</button>
           <div className="flex-grow"></div>
           <button
             onClick={() => {
