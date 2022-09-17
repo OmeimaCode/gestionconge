@@ -29,7 +29,7 @@ function App() {
         <Route path="gestioncompte" element={<GestionCompte/>}/>
       </Route>
       <Route path="/login" element={cookies.user?<Navigate to={"/dashboard"}/>: <Login />} />
-      <Route path="/admin" element={<Admin/>}/>
+      <Route path="/admin" element={cookies.user?<Navigate to={"/dashboard"}/>: <Admin/>}/>
     </Routes>
 
     <ToastContainer/>

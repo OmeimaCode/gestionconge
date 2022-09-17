@@ -59,7 +59,7 @@ const MenuUser = [
 
 const Sidebar = () => {
   const [cookies, setCookie] = useCookies(["user"]);
- const [user, setuser] = useState(cookies.user)
+  const [user, setuser] = useState(cookies.user)
   const [open, setOpen] = useState(true);
   useEffect(()=>{
     setuser(cookies.user)

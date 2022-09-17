@@ -1,12 +1,8 @@
 import InputField from "../components/InputField";
 import SubmitButton from "../components/SubmitButton";
-
 import LoginMan from "../imgs/login-man.png";
-
 import InformationCircleIcon from "@heroicons/react/24/solid/InformationCircleIcon";
-
 import { SEPARATOR, SITE_TITLE } from "../utils/globalVariabls";
-
 import { useEffect, useState } from "react";
 import Checkbox from "../components/Checkbox";
 import Header from "../components/Header";
@@ -14,24 +10,24 @@ import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { BsFillUnlockFill } from "react-icons/bs";
 import { toast } from "react-toastify";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 const DB = [
   {
-    email: "n@gmail.com",
+    email: "oumaima hraichi",
     password: "123456",
-    isAdmin:false,
+    isAdmin: false,
   },
   {
     email: "o@gmail.com",
     password: "abcdef",
-    isAdmin:true,
+    isAdmin: true,
   },
 ];
 const Login = () => {
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
-  const [isLoading, setisLoading] = useState(false)
-  const [cookies, setCookie] = useCookies(['user']);
+  const [isLoading, setisLoading] = useState(false);
+  const [cookies, setCookie] = useCookies(["user"]);
 
   useEffect(() => {
     document.title = `Login ${SEPARATOR} ${SITE_TITLE}`;
@@ -42,21 +38,26 @@ const Login = () => {
     event.preventDefault();
     //
     //
-    setisLoading(true)
+    setisLoading(true);
     setTimeout(() => {
       const data = {
         email,
         password,
-        isAdmin:false
+        isAdmin: false,
       };
 
-      if (DB.some((d) => d.email == email && d.password==password && d.isAdmin==false)) {
-        console.log('data', data)
-        setCookie('user', data);
+      if (
+        DB.some(
+          (d) =>
+            d.email == email && d.password == password && d.isAdmin == false
+        )
+      ) {
+        console.log("data", data);
+        setCookie("user", data);
       } else {
         toast.error("Utilisateur introuvable");
       }
-   setisLoading(false)
+      setisLoading(false);
     }, 2000);
   };
 
@@ -108,7 +109,14 @@ const Login = () => {
             </label>
           </div>
           <div className="py-4"></div>
-          <button type="submit" className={`btn btn-accent  border-transparent hover:bg-amber-200 bg-cyan-700 hover:text-cyan-700 hover:border-transparent text-white ${isLoading&& "loading"}`}>Se connecter</button>
+          <button
+            type="submit"
+            className={`btn btn-accent  border-transparent hover:bg-amber-200 bg-cyan-700 hover:text-cyan-700 hover:border-transparent text-white ${
+              isLoading && "loading"
+            }`}
+          >
+            Se connecter
+          </button>
           <div className="flex-grow"></div>
           <button
             onClick={() => {
