@@ -10,8 +10,10 @@ const Demandeconge = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [debut, setDebut] = useState()
+
   const [fin, setFin] = useState()
   const [isLoading, setisLoading] = useState(false)
+  const [conge, setConge] = useState('maladie')
   //maladie -  annuel - exceptionnel - recompensation
   const onSubmit = async(event) => {
     event.preventDefault()
@@ -20,10 +22,7 @@ const Demandeconge = () => {
       return
     }
     setisLoading(true)
-  
-  
-  
-  
+
   //Data to send
     const data={
       remplacant:name,
@@ -42,20 +41,11 @@ const Demandeconge = () => {
       toast.error("Erreur rencontrée")
     })
     setisLoading(false)
-
-
-    // //For testing uncomment this one
-    // setTimeout(()=>{
-    //   toast.success('Demande envoyée')
-    //   console.log(data)
-    //   setisLoading(false)
-    // },3000)
-
   }
-  const [conge, setConge] = useState('maladie')
+
   return (
     <div className='pl-10 py-6  flex  w-full  flex-col gap-4'>
-      <form onSubmit={onSubmit} className='max-w-[1000px] w-full flex flex-col gap-5'>
+      <form onSubmit={(e)=>onSubmit(e)} className='max-w-[1000px] w-full flex flex-col gap-5'>
         <h1 className='font-title text-2xl uppercase py-6'>Envoyez une demande de congé :</h1>
         <div className='py-2'>
 
