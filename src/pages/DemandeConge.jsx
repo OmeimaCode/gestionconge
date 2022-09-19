@@ -1,15 +1,16 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useCookies } from 'react-cookie'
+import {useCookies} from 'react-cookie'
 import { toast } from 'react-toastify'
 
 //localhost:4000/conge/add
 
 const Demandeconge = () => {
+  const [cookies]=useCookies(["user"])
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [debut, setDebut] = useState()
-  const [cookies]=useCookies(['user'])
+
   const [fin, setFin] = useState()
   const [isLoading, setisLoading] = useState(false)
   const [conge, setConge] = useState('maladie')
@@ -25,14 +26,15 @@ const Demandeconge = () => {
   //Data to send
     const data={
       remplacant:name,
-      emailRemplacant:email,
+      mailRemplacant:email,
       date_fin:fin,
       date_debut:debut,
       type:conge,
       username:cookies.user.email
     }
-    
-    const url ="http://localhost:4000/conge/add"
+
+
+    const url ="http://localhost:8888/demande"
     await axios.post(url,data).then((res)=>{
        toast.success("Opération réussie")
     }).catch((err)=>{
