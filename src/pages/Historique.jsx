@@ -110,7 +110,7 @@ const Historique = () => {
                   <td>{h.date_debut}</td>
                   <td>{h.date_fin}</td>
                   <th>
-                    {h.statusDemand !=  "INITIAL" && h.statusDemand == "APPROVED" ? (
+                    {h.statusDemand !==  'INITIAL' && h.statusDemand === 'APPROVED' ? (
                       <span className="badge bg-primary text-white badge-lg">
                         {h.statusDemand}
                       </span>
