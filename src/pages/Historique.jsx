@@ -50,21 +50,25 @@ const Historique = () => {
   const [historiques, setHistoriques] = useState([]);
   const [isLoading, setisLoading] = useState(true);
 
-  useEffect(() => {
+    useEffect(() => {
     //
     getHistoriques();
   }, []);
 
+
   const getHistoriques = async () => {
     //appel au backend
+        const url="http://localhost:8888/demandes"
+        const response=await axios.get(url)
+        console.log(response.data)
+        setHistoriques(response.data)
+        setisLoading(false);
 
-    //     const url="localhost:4000/~/~"
-    //    const response=await axios.get(url)
-    //    setHistoriques(response.data)
-    setTimeout(() => {
-      setHistoriques(data);
-      setisLoading(false);
-    }, 2000);
+        //setHistoriques(response.data)
+    //setTimeout(() => {
+      //setHistoriques(data);
+      //setisLoading(false);
+//}, 2000);
   };
   return (
     <div className="p-10 flex   w-full  flex-col gap-5">
@@ -98,17 +102,17 @@ const Historique = () => {
                       </div>
                       <div>
                         <div className="font-bold">{h.remplacant}</div>
-                        <div className="text-sm opacity-50">{h.email}</div>
+                        <div className="text-sm opacity-50">{h.mailRemplacant}</div>
                       </div>
                     </div>
                   </td>
-                  <td>Conge {h.typeConge}</td>
-                  <td>{h.dateDebut}</td>
-                  <td>{h.dateFin}</td>
+                  <td>Conge {h.type}</td>
+                  <td>{h.date_debut}</td>
+                  <td>{h.date_fin}</td>
                   <th>
-                    {h.status == "accepter" ? (
+                    {h.statusDemand !=  "INITIAL" && h.statusDemand == "APPROVED" ? (
                       <span className="badge bg-primary text-white badge-lg">
-                        {h.status}
+                        {h.statusDemand}
                       </span>
                     ) : (
                       <>
