@@ -17,6 +17,12 @@ const Demandeconge = () => {
       toast.error("Date fin invalide !")
       return
     }
+    setisLoading(true)
+  
+  
+  
+  
+  //Data to send
     const data={
       nomRemplacant:name,
       emailRemplacant:email,
@@ -25,25 +31,27 @@ const Demandeconge = () => {
       type:conge
     }
 
-    setisLoading(true)
+
+    const url ="http://localhost:4000/conge/add"
+    await axios.post(url,data).then((res)=>{
+       toast.success("Opération réussie")
+    }).catch((err)=>{
+      toast.error("Erreur rencontrée")
+    })
+    setisLoading(false)
 
 
-    // const url ="http://localhost:4000/conge/add"
-    // await axios.post(url,data)
-    // setisLoading(false)
-
-
-    //For testing uncomment this one
-    setTimeout(()=>{
-      toast.success('Demande envoyée')
-      console.log(data)
-      setisLoading(false)
-    },3000)
+    // //For testing uncomment this one
+    // setTimeout(()=>{
+    //   toast.success('Demande envoyée')
+    //   console.log(data)
+    //   setisLoading(false)
+    // },3000)
 
   }
   const [conge, setConge] = useState('maladie')
   return (
-    <div className='pl-10 py-6  flex flex-row  w-full  flex-col gap-4'>
+    <div className='pl-10 py-6  flex  w-full  flex-col gap-4'>
       <form onSubmit={onSubmit} className='max-w-[1000px] w-full flex flex-col gap-5'>
         <h1 className='font-title text-2xl uppercase py-6'>Envoyez une demande de congé :</h1>
         <div className='py-2'>
