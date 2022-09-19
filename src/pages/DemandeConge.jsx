@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useCookies } from 'react-cookie'
 import { toast } from 'react-toastify'
 
 //localhost:4000/conge/add
@@ -8,8 +9,10 @@ const Demandeconge = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [debut, setDebut] = useState()
+  const [cookies]=useCookies(['user'])
   const [fin, setFin] = useState()
   const [isLoading, setisLoading] = useState(false)
+  const [conge, setConge] = useState('maladie')
   //maladie -  annuel - exceptionnel - recompensation
   const onSubmit = async(event) => {
     event.preventDefault()
@@ -18,20 +21,17 @@ const Demandeconge = () => {
       return
     }
     setisLoading(true)
-  
-  
-  
-  
+
   //Data to send
     const data={
-      nomRemplacant:name,
+      remplacant:name,
       emailRemplacant:email,
-      dateFin:fin,
-      dateDebut:debut,
-      type:conge
+      date_fin:fin,
+      date_debut:debut,
+      type:conge,
+      username:cookies.user.email
     }
-
-
+    
     const url ="http://localhost:4000/conge/add"
     await axios.post(url,data).then((res)=>{
        toast.success("Opération réussie")
@@ -39,20 +39,11 @@ const Demandeconge = () => {
       toast.error("Erreur rencontrée")
     })
     setisLoading(false)
-
-
-    // //For testing uncomment this one
-    // setTimeout(()=>{
-    //   toast.success('Demande envoyée')
-    //   console.log(data)
-    //   setisLoading(false)
-    // },3000)
-
   }
-  const [conge, setConge] = useState('maladie')
+
   return (
     <div className='pl-10 py-6  flex  w-full  flex-col gap-4'>
-      <form onSubmit={onSubmit} className='max-w-[1000px] w-full flex flex-col gap-5'>
+      <form onSubmit={(e)=>onSubmit(e)} className='max-w-[1000px] w-full flex flex-col gap-5'>
         <h1 className='font-title text-2xl uppercase py-6'>Envoyez une demande de congé :</h1>
         <div className='py-2'>
 
