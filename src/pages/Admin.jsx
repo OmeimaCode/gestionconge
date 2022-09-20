@@ -5,21 +5,11 @@ import { useCookies } from "react-cookie";
 import { SEPARATOR, SITE_TITLE } from "../utils/globalVariabls";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { DB } from "./login";
 
 
 
-const DB = [
-  {
-    email: "n@gmail.com",
-    password: "123456",
-    isAdmin: false,
-  },
-  {
-    email: "o@gmail.com",
-    password: "abcdef",
-    isAdmin: true,
-  },
-];
+
 const Admin = () => {
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
@@ -36,17 +26,12 @@ const Admin = () => {
     //
     setisLoading(true);
     setTimeout(() => {
-      const data = {
-        email,
-        password,
-        isAdmin: true,
-      };
+     const data =  DB.filter(
+        (d) =>
+          d.email == email && d.password == password && d.isAdmin == true
+      )[0]
 
-      if (
-        DB.some(
-          (d) =>
-            d.email == email && d.password == password && d.isAdmin == true
-        )
+      if (data
       ) {
         console.log("data", data);
         setCookie("user", data);

@@ -11,15 +11,21 @@ import { MdEmail } from "react-icons/md";
 import { BsFillUnlockFill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
-const DB = [
+export const DB = [
   {
     email: "oumaima hraichi",
     password: "123456",
+    fonction:"Profession : Directeur du secteur juridique departement informatique , depuit 12/05/2010 .",
+    tel:"072502451",
+    ville:"",
     isAdmin: false,
   },
   {
-    email: "o@gmail.com",
+    email: "Naim",
     password: "abcdef",
+    fonction:"Profession : Directeur du secteur juridique departement informatique , depuit 12/05/2010 .",
+    tel:"072502451",
+    ville:"",
     isAdmin: true,
   },
 ];
@@ -28,6 +34,8 @@ const Login = () => {
   const [password, setpassword] = useState();
   const [isLoading, setisLoading] = useState(false);
   const [cookies, setCookie] = useCookies(["user"]);
+
+
 
   useEffect(() => {
     document.title = `Login ${SEPARATOR} ${SITE_TITLE}`;
@@ -40,18 +48,12 @@ const Login = () => {
     //
     setisLoading(true);
     setTimeout(() => {
-      const data = {
-        email,
-        password,
-        isAdmin: false,
-      };
+      const data =  DB.filter(
+        (d) =>
+          d.email == email && d.password == password && d.isAdmin == false
+      )[0]
 
-      if (
-        DB.some(
-          (d) =>
-            d.email == email && d.password == password && d.isAdmin == false
-        )
-      ) {
+      if (data) {
         console.log("data", data);
         setCookie("user", data);
       } else {
